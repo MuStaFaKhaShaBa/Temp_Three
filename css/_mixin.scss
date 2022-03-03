@@ -1,0 +1,10 @@
+@mixin grid-tem($Column, $gap) {
+    display: grid;
+    gap: $gap;
+    $widTh: 300px;
+    @if $Column == 4 {
+        $widTh: 250px;
+    }
+
+    grid-template-columns: repeat(auto-fill, minmax($widTh, 1fr));
+}

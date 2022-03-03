@@ -1,0 +1,127 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --mainColor: #2196f3;
+    --secColor: #04223d;
+    --whiteColor: #ccdfee;
+    --fontColor: #3e4b61;
+    --transparentColor: hsl(207, 61%, 54%, 50%);
+}
+
+body::-webkit-scrollbar {
+    width: 15px;
+    background-color: #afb2b4dc;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px var(--secColor);
+}
+body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--secColor);
+    border: 3px solid #8a8b8b;
+}
+html {
+    scroll-behavior: smooth;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.up {
+    font-size: 50px;
+    color: var(--mainColor);
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    cursor: pointer;
+    z-index: 5555;
+}
+@media (max-width: 767px) {
+    .up {
+        font-size: 30px;
+        right: 35px;
+        bottom: 40px;
+    }
+}
+.special {
+    margin: 0 auto;
+    padding: 5px 20px;
+    border: 1px solid var(--secColor);
+    width: fit-content;
+    position: relative;
+    cursor: grab;
+    color: var(--secColor);
+    transition: 0.3s;
+    z-index: 5;
+}
+.special::after,
+.special::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--mainColor);
+    transition: 1s;
+    z-index: -1;
+}
+.special::before {
+    left: -30px;
+}
+.special::after {
+    right: -30px;
+}
+.special:hover {
+    transition-delay: 0.4s;
+    color: #fff;
+    border-color: #fff;
+}
+.special:hover::before {
+    animation: specialHead-left 0.5s linear forwards;
+}
+.special:hover::after {
+    animation: specialHead-right 0.5s linear forwards;
+}
+
+.special h3 {
+    color: inherit;
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Media */
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+/* Medium */
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+/* Large */
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
