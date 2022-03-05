@@ -12,7 +12,19 @@
     --fontColor: #3e4b61;
     --transparentColor: hsl(207, 61%, 54%, 50%);
 }
-
+body {
+    counter-reset: Services-Con;
+}
+.over-lay::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 56;
+    top: 0;
+    left: 0;
+    background-color: #04223d7a;
+}
 body::-webkit-scrollbar {
     width: 15px;
     background-color: #afb2b4dc;
@@ -41,9 +53,9 @@ a {
     bottom: 20px;
     right: 15px;
     cursor: pointer;
-    z-index: 5555;
+    z-index: 55;
 }
-@media (max-width: 767px) {
+@media (max-width: 507px) {
     .up {
         font-size: 30px;
         right: 35px;
@@ -98,6 +110,21 @@ a {
     font-weight: 600;
     text-transform: uppercase;
 }
+@media (max-width: 400px) {
+    .special {
+        padding: 5px 10px;
+    }
+    .special::before {
+        left: -20px;
+    }
+    .special::after {
+        right: -20px;
+    }
+
+    .special h3 {
+        font-size: 25px;
+    }
+}
 
 /* Media */
 
@@ -106,6 +133,7 @@ a {
     padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
+    /* overflow: hidden; */
 }
 /* Small */
 @media (min-width: 768px) {

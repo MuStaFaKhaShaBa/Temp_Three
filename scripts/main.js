@@ -2,12 +2,6 @@
 let UpArrow = document.querySelector(".up");
 UpArrow.style.display = 'none';
 
-window.onscroll = () => {
-    if (window.scrollY > 1000) {
-        UpArrow.style.display = 'block';
-    } else
-        UpArrow.style.display = 'none';
-}
 UpArrow.onclick = () => {
     window.scrollTo(0, 0);
 }
@@ -106,3 +100,85 @@ function Testimonials() {
     Container.appendChild(mainSec); //Append Main Section That Catch All Element To Container 
 
 }
+
+/// Our Skills Section
+
+let fields_Parent = document.querySelectorAll("#skills .container .dataprog section");
+let fields = document.querySelectorAll("#skills .container .dataprog section i i");
+console.log();
+window.onscroll = () => {
+    // Services Section
+    let width = 0,
+        level = 0;
+
+    if ((window.scrollY >= (document.querySelector("#skills").offsetTop - 260)) && (window.scrollY <= document.querySelector("#skills").offsetTop + 800)) {
+        fields.forEach((el) => {
+            width = fields_Parent[level++].getAttribute("data-prog");
+            el.style["width"] = `${width}%`;
+
+        });
+        setTimeout(deley, 4000);
+    } else {
+        fields.forEach((el) => {
+            width = fields_Parent[level++].getAttribute("data-prog");
+            el.style.width = `0%`;
+        });
+        level = 0;
+        setTimeout(Mdeley, 100);
+    }
+    /////
+    // To Up Arrow
+
+    if (window.scrollY > 1000) {
+        UpArrow.style.display = 'block';
+    } else
+        UpArrow.style.display = 'none';
+    /////
+}
+
+function deley() {
+    fields.forEach((el) => {
+        el.style.cssText += '--deley:0s';
+    })
+}
+
+function Mdeley() {
+    let level = 0;
+    fields.forEach((el) => {
+        el.style.cssText += `--deley:${level++}s`;
+    })
+}
+
+/// Start Event Section ///
+/**
+ *   <section class="events-list">
+            <div>
+                <h3>Title</h3>
+                <section class="btns">
+                    <button class="show">Show</button>
+                    <button class="cancel">Cancel</button>
+                </section>
+            </div>
+        </section>
+ * 
+ */
+let BtnShowEvent = document.querySelector("#events .Btn-event"),
+    EventsContainer = document.querySelector("#events .events-list"),
+    CloseEventsCont =document.querySelector("#events .events-list .CloseBtn") ;
+BtnShowEvent.onclick = () => {
+    EventsContainer.style.right = `0px`;
+    document.body.classList.toggle("over-lay");
+}
+CloseEventsCont.onclick= ()=>{
+    EventsContainer.style.right = `-500px`;
+    document.body.classList.toggle("over-lay");
+    
+}
+
+let Date_ = { // object Has Four Date Elements
+    Days: document.querySelector("#events .container .event .date .days p"),
+    Hours: document.querySelector("#events .container .event .date .hours p"),
+    Minutes: document.querySelector("#events .container .event .date .minutes p"),
+    Seconds: document.querySelector("#events .container .event .date .seconds p"),
+};
+let subscribe = document.querySelector(`#events .subscribe input[type="submit"`); //subscribe Button

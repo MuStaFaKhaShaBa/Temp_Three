@@ -8,3 +8,40 @@
 
     grid-template-columns: repeat(auto-fill, minmax($widTh, 1fr));
 }
+@mixin BackGZiqZag {
+    padding: 60px 0;
+    position: relative;
+    background-color: #ececec;
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        background-image: linear-gradient(135deg, #fff 25%, transparent 25%),
+            linear-gradient(-135deg, #fff 25%, transparent 25%);
+        background-size: 30px 30px;
+    }
+    &::before {
+        top: 0;
+    }
+    &::after {
+        bottom: 0;
+        background-image: linear-gradient(45deg, #fff 25%, transparent 25%),
+            linear-gradient(-45deg, #fff 25%, transparent 25%);
+    }
+}
+
+
+@mixin fill {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 3px;
+    transition: 0.3s;
+    background-color: var(--mainColor);
+}

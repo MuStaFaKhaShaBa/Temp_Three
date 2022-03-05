@@ -74,12 +74,22 @@
 }
 
 @keyframes Flashing {
-    0%,40%{
+    0%,
+    40% {
         opacity: 1;
     }
-    100%{
+    100% {
         opacity: 0;
         width: 200%;
         height: 200%;
+    }
+}
+@keyframes ProgressFlashing {
+    0% {
+        background-color: var(--mainColor);
+    }
+    
+    100% {
+        background-color: #03a8f4b0;
     }
 }
