@@ -1608,7 +1608,7 @@
 
 @media (max-width: 420px) {
   #events .container .event .date div {
-    width: 50px;
+    width: 60px;
   }
   #events .container .event .date div p:first-child {
     margin: 10px 0;
@@ -1904,6 +1904,9 @@
   #events .events-list {
     top: 60%;
     width: 280px;
+  }
+  #events .events-list .events-fields {
+    max-height: 50vh;
   }
   #events .events-list .events-fields div {
     -webkit-box-orient: vertical;

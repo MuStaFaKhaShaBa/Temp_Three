@@ -1241,6 +1241,7 @@
             top: 60%;
             width: 280px;
             .events-fields {
+                max-height: 50vh;
                 div {
                     flex-direction: column;
                     h3 {
