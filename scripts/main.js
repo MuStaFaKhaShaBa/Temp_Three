@@ -275,6 +275,7 @@ function StartWebSite() { // function Called When Web Site Open
 function AvailableEvents() {
     if (ExistenceEvent.length > 0) { // Add First Event From ExistenceEvent
         SendEventToTimer(ExistenceEvent[0]);
+        EventNum = 1;
     } else { // If We Doesn't Have Events Available 
         // We Will Show Message 
         ResetDateFields();
