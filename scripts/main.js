@@ -248,6 +248,7 @@ ResetSubscribedEvents.onclick = () => {
     AddToLocalStorage([]); // Reset LocalStorage
     StartWebSite(); // Called To Determined Add Event Or What
     SubscribedEvent = false; // No Event Subscribed
+    SetTimeP(Date.now());//Set Time As Now 
 }
 
 /// /////// /////// ///////
@@ -395,6 +396,7 @@ function EventToField(ArrayOfEvents) {
         eventField.lastElementChild.lastElementChild.onclick = () => {
             ArrayOfEvents = ArrayOfEvents.filter((el, indexChild) => index !== indexChild); // Delete Event
             AddToLocalStorage(ArrayOfEvents); // Will Delete From Local Storage
+            SetTimeP(Date.now());//Set Time As Now 
         };
     })
 }
