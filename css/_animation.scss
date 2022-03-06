@@ -84,11 +84,20 @@
         height: 200%;
     }
 }
+@keyframes DateFlashing {
+    50% {
+        background-color: #fff;
+    }
+    100% {
+        background-color: var(--mainColor);
+        color: #fff;
+    }
+}
 @keyframes ProgressFlashing {
     0% {
         background-color: var(--mainColor);
     }
-    
+
     100% {
         background-color: #03a8f4b0;
     }

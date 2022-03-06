@@ -172,6 +172,26 @@
   }
 }
 
+@-webkit-keyframes DateFlashing {
+  50% {
+    background-color: #fff;
+  }
+  100% {
+    background-color: var(--mainColor);
+    color: #fff;
+  }
+}
+
+@keyframes DateFlashing {
+  50% {
+    background-color: #fff;
+  }
+  100% {
+    background-color: var(--mainColor);
+    color: #fff;
+  }
+}
+
 @-webkit-keyframes ProgressFlashing {
   0% {
     background-color: var(--mainColor);
@@ -1634,20 +1654,63 @@
   border-color: var(--mainColor);
 }
 
-#events .container .event .subscribe input[type="submit"] {
-  cursor: pointer;
+#events .container .event .subscribe button {
+  width: 40%;
   margin-top: 20px;
-  background-color: var(--mainColor);
-  border: 0;
-  border-radius: 40px;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 700;
-  text-transform: uppercase;
+  padding: 10px;
+  color: #03a9f4;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid var(--mainColor);
+  position: relative;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  font-size: 0.8em;
+  z-index: 2;
+  cursor: pointer;
 }
 
-#events .container .event .subscribe input[type="submit"]:hover {
-  background-color: #03a8f4a4;
+#events .container .event .subscribe button::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 3px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: var(--mainColor);
+  border-radius: 10px;
+  z-index: -1;
+}
+
+#events .container .event .subscribe button:hover {
+  -webkit-transition-delay: 0.1s;
+          transition-delay: 0.1s;
+  color: #fff;
+}
+
+#events .container .event .subscribe button:hover::before {
+  width: 100%;
+}
+
+@media (max-width: 450px) {
+  #events .container .event .subscribe button {
+    font-size: 0.7em;
+    padding: 10px 5px;
+  }
+}
+
+@media (max-width: 378px) {
+  #events .container .event .subscribe button {
+    width: 80%;
+    font-size: 0.8em;
+  }
+  #events .container .event .subscribe .BtnSubscribe {
+    background-color: var(--mainColor);
+    color: #fff;
+  }
 }
 
 #events .Btn-event {
@@ -1708,7 +1771,7 @@
   height: 5px;
 }
 
-#events .events-list .events-fields div {
+#events .events-list .events-fields > div {
   padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1722,26 +1785,91 @@
   background-color: #fff;
   border: 1px solid rgba(133, 133, 133, 0.24);
   border-radius: 25px;
-  margin-bottom: 20px;
+  margin: 20px 0;
+  color: var(--mainColor);
+  cursor: pointer;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
-#events .events-list .events-fields div h3 {
-  color: var(--mainColor);
-  font-size: 20px;
+#events .events-list .events-fields > div h3 {
+  color: inherit;
+  font-size: 1em;
   text-transform: capitalize;
 }
 
-#events .events-list .events-fields div .btns {
+#events .events-list .events-fields > div .btns {
   margin-top: 10px;
 }
 
-#events .events-list .events-fields div .btns button {
-  padding: 10px;
-  border-radius: 20px;
-  width: 80px;
-  border: 1px solid var(--mainColor);
+#events .events-list .events-fields > div .btns button:last-child {
+  margin-left: 10px;
+}
+
+#events .events-list .events-fields > div:hover {
+  -webkit-box-shadow: 0 0 10px var(--mainColor);
+          box-shadow: 0 0 10px var(--mainColor);
+}
+
+#events .events-list .events-fields .Done {
+  background-color: var(--mainColor);
+  color: #fff;
+}
+
+#events .events-list .events-fields .Done .btns button {
+  border-color: #fff;
+}
+
+#events .events-list .events-fields .Done .btns button::before {
   background-color: #fff;
-  color: #03a9f4;
+}
+
+#events .events-list .events-fields .Done .btns button:hover {
+  color: var(--mainColor);
+}
+
+#events .events-list .option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px;
+}
+
+#events .events-list .option .nearest-Event {
+  color: var(--fontColor);
+  font-size: 0.8em;
+}
+
+#events .events-list .option .clear {
+  background-color: #fff;
+}
+
+@media (max-width: 530px) {
+  #events .events-list .option {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #events .events-list .option .clear {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+#events .events-list button {
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 80px;
+  border: 1px solid var(--mainColor);
+  background-color: inherit;
+  color: inherit;
   position: relative;
   z-index: 5;
   -webkit-transition: 0.3s;
@@ -1749,7 +1877,7 @@
   cursor: pointer;
 }
 
-#events .events-list .events-fields div .btns button::before {
+#events .events-list button::before {
   content: "";
   position: absolute;
   width: 0%;
@@ -1760,32 +1888,22 @@
   -webkit-transition: 0.3s;
   transition: 0.3s;
   background-color: var(--mainColor);
-  border-radius: 20px;
+  border-radius: 10px;
   z-index: -1;
 }
 
-#events .events-list .events-fields div .btns button:hover {
+#events .events-list button:hover {
   color: #fff;
 }
 
-#events .events-list .events-fields div .btns button:hover::before {
+#events .events-list button:hover::before {
   width: 100%;
-}
-
-#events .events-list .events-fields div .btns button:last-child {
-  margin-left: 10px;
-}
-
-#events .events-list .nearest-Event {
-  text-align: center;
-  color: var(--fontColor);
-  margin: 20px 0;
 }
 
 @media (max-width: 530px) {
   #events .events-list {
     top: 60%;
-    width: 260px;
+    width: 280px;
   }
   #events .events-list .events-fields div {
     -webkit-box-orient: vertical;
@@ -1795,20 +1913,18 @@
   }
   #events .events-list .events-fields div h3 {
     font-size: 15px;
-  }
-  #events .events-list .events-fields div .btns button {
-    padding: 10px;
-    font-size: 11px;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    border-radius: 15px;
-  }
-  #events .events-list .events-fields div .btns button::before {
-    border-radius: 15px;
+    text-align: center;
   }
   #events .events-list .events-fields div .btns button:last-child {
     margin-left: 5px;
+  }
+  #events .events-list button {
+    padding: 10px;
+    font-size: 11px;
+    border-radius: 15px;
+  }
+  #events .events-list button::before {
+    border-radius: 15px;
   }
 }
 

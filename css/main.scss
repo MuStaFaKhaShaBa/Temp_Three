@@ -1061,18 +1061,44 @@
                         border-color: var(--mainColor);
                     }
                 }
-                input[type="submit"] {
-                    cursor: pointer;
+                button {
+                    width: 40%;
                     margin-top: 20px;
-                    background-color: var(--mainColor);
-                    border: 0;
-                    border-radius: 40px;
-                    color: #fff;
-                    font-size: 20px;
-                    font-weight: 700;
-                    text-transform: uppercase;
+                    padding: 10px;
+                    color: #03a9f4;
+                    border-radius: 10px;
+                    background-color: #fff;
+                    border: 1px solid var(--mainColor);
+                    position: relative;
+                    transition: 0.2s;
+                    font-size: 0.8em;
+                    z-index: 2;
+                    cursor: pointer;
+                    &::before {
+                        @include fill;
+                        border-radius: 10px;
+                        z-index: -1;
+                    }
                     &:hover {
-                        background-color: #03a8f4a4;
+                        transition-delay: 0.1s;
+                        color: #fff;
+                        &::before {
+                            width: 100%;
+                        }
+                    }
+                    @media (max-width: 450px) {
+                        font-size: 0.7em;
+                        padding: 10px 5px;
+                    }
+                }
+                @media (max-width: 378px) {
+                    button {
+                        width: 80%;
+                        font-size: 0.8em;
+                    }
+                    .BtnSubscribe {
+                        background-color: var(--mainColor);
+                        color: #fff;
                     }
                 }
             }
@@ -1119,13 +1145,12 @@
                 border-radius: 10px;
                 background-color: #eee;
             }
-
             &::-webkit-scrollbar-thumb {
                 background-color: var(--mainColor);
                 border-radius: 10px;
                 height: 5px;
             }
-            div {
+            > div {
                 padding: 20px;
                 display: flex;
                 align-items: center;
@@ -1133,73 +1158,109 @@
                 background-color: #fff;
                 border: 1px solid rgba(133, 133, 133, 0.24);
                 border-radius: 25px;
-                margin-bottom: 20px;
-
+                margin: 20px 0;
+                color: var(--mainColor);
+                cursor: pointer;
+                transition: .3s;
                 h3 {
-                    color: var(--mainColor);
-                    font-size: 20px;
+                    color: inherit;
+                    font-size: 1em;
                     text-transform: capitalize;
                 }
                 .btns {
                     margin-top: 10px;
-                    button {
-                        padding: 10px;
-                        border-radius: 20px;
-                        width: 80px;
-                        border: 1px solid var(--mainColor);
-                        background-color: #fff;
-                        color: #03a9f4;
-                        position: relative;
-                        z-index: 5;
-                        transition: 0.3s;
-                        cursor: pointer;
 
-                        &::before {
-                            @include fill;
-                            border-radius: 20px;
-                            z-index: -1;
-                        }
-                        &:hover {
-                            &::before {
-                                width: 100%;
-                            }
-                            color: #fff;
-                        }
-                    }
                     button:last-child {
                         margin-left: 10px;
                     }
                 }
+                &:hover{
+                    box-shadow: 0 0 10px var(--mainColor);
+                }
+            }
+            .Done {
+                //Style Event Done
+                background-color: var(--mainColor);
+                color: #fff;
+                .btns button {
+                    border-color: #fff;
+                    &::before {
+                        background-color: #fff;
+                    }
+                    &:hover {
+                        color: var(--mainColor);
+                    }
+                }
             }
         }
-        .nearest-Event {
-            text-align: center;
-            color: var(--fontColor);
-            margin: 20px 0;
+        .option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+            .nearest-Event {
+                color: var(--fontColor);
+                font-size: 0.8em;
+            }
+            .clear {
+                background-color: #fff;
+            }
+            @media (max-width:530px) {
+                flex-direction: column;
+                .clear{
+                    width: 100%;
+                    margin-top: 10px;
+                }
+            }
+        }
+        button {
+            padding: 10px;
+            border-radius: 10px;
+            min-width: 80px;
+            border: 1px solid var(--mainColor);
+            background-color: inherit;
+            color: inherit;
+            position: relative;
+            z-index: 5;
+            transition: 0.3s;
+            cursor: pointer;
+
+            &::before {
+                @include fill;
+                border-radius: 10px;
+                z-index: -1;
+            }
+            &:hover {
+                &::before {
+                    width: 100%;
+                }
+                color: #fff;
+            }
         }
         @media (max-width: 530px) {
             top: 60%;
-            width: 260px;
+            width: 280px;
             .events-fields {
                 div {
                     flex-direction: column;
                     h3 {
                         font-size: 15px;
+                        text-align: center;
                     }
                     .btns {
-                        button {
-                            padding: 10px;
-                            font-size: 11px;
-                            width: fit-content;
-                            border-radius: 15px;
-                            &::before {
-                                border-radius: 15px;
-                            }
-                        }
                         button:last-child {
                             margin-left: 5px;
                         }
                     }
+                }
+            }
+            button {
+                padding: 10px;
+                font-size: 11px;
+                // width: f/;
+                border-radius: 15px;
+                &::before {
+                    border-radius: 15px;
                 }
             }
         }

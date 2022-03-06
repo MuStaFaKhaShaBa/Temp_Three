@@ -769,14 +769,20 @@
                         <p>Seconds</p>
                     </div>
                 </section>
-                <section class="info">
+                <section class="info" data-id="">
                     <h3>Tech Masters Event 2022</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et vero tenetur doloremque iusto ut
                         adipisci quam ratione aliquam excepturi nulla in harum, veritatis porro</p>
                 </section>
                 <section class="subscribe">
                     <input type="email" placeholder="Enter Your Email">
-                    <input type="submit" value="Subscribe">
+                    <button class="BtnSubscribe">
+                        Subscribe
+                    </button>
+                    <button class="otherEvent">
+                        Show Other Event
+                    </button>
+
                 </section>
             </div>
         </div>
@@ -784,43 +790,20 @@
         <section class="events-list">
             <i class="fa-solid fa-xmark CloseBtn"></i>
             <section class="events-fields">
-                <div>
-                    <h3>Title</h3>
-                    <section class="btns">
-                        <button class="show">Show</button>
-                        <button class="cancel">Cancel</button>
-                    </section>
-                </div>
-                <div>
-                    <h3>Title</h3>
-                    <section class="btns">
-                        <button class="show">Show</button>
-                        <button class="cancel">Cancel</button>
-                    </section>
-                </div>
-                <div>
-                    <h3>Title</h3>
-                    <section class="btns">
-                        <button class="show">Show</button>
-                        <button class="cancel">Cancel</button>
-                    </section>
-                </div>
-                <div>
-                    <h3>Title</h3>
-                    <section class="btns">
-                        <button class="show">Show</button>
-                        <button class="cancel">Cancel</button>
-                    </section>
-                </div>
+            
             </section>
-            <p class="nearest-Event">
-                00-00-00
-            </p>
+            <div class="option">
+                <p class="nearest-Event">
+                    00-00-00
+                </p>
+                <button class="clear">
+                    Clear Events List
+                </button>
+            </div>
         </section>
-    </section>
-    <!-- End Events -->
-    <!-- Script -->
-    <script src="scripts/main.js"></script>
+        <!-- End Events -->
+        <!-- Script -->
+        <script src="scripts/main.js"></script>
 </body>
 
 </html>

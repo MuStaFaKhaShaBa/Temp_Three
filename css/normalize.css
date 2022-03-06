@@ -36,8 +36,14 @@ body::-webkit-scrollbar-thumb {
     background-color: var(--secColor);
     border: 3px solid #8a8b8b;
 }
+
 html {
     scroll-behavior: smooth;
+}
+
+.flash {
+    /*class Flashing */
+    animation: DateFlashing 0.6s ease-in infinite alternate;
 }
 ul {
     list-style: none;
@@ -46,6 +52,7 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
 .up {
     font-size: 50px;
     color: var(--mainColor);
