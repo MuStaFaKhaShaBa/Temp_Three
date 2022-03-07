@@ -1788,8 +1788,8 @@
   margin: 20px 0;
   color: var(--mainColor);
   cursor: pointer;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 #events .events-list .events-fields > div h3 {
@@ -1932,4 +1932,355 @@
 }
 
 /*! End Events */
+/*! Start Pricing*/
+#pricing {
+  padding: 60px 0;
+  background-color: #ececec;
+}
+
+#pricing .container {
+  display: -ms-grid;
+  display: grid;
+  gap: 30px;
+  -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin-top: 100px;
+}
+
+#pricing .container > section {
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.384);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.384);
+  border-radius: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+#pricing .container > section header {
+  text-align: center;
+  padding: 30px 0;
+}
+
+#pricing .container > section header h2 {
+  font-size: 25px;
+  font-weight: 700;
+  color: var(--fontColor);
+}
+
+#pricing .container > section header img {
+  width: 60px;
+  margin: 20px 0;
+}
+
+#pricing .container > section header h3 {
+  font-size: 50px;
+  font-weight: 800;
+  color: var(--mainColor);
+}
+
+#pricing .container > section header p {
+  font-size: 17px;
+  color: var(--fontColor);
+}
+
+#pricing .container > section section div {
+  padding: 20px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.11);
+}
+
+#pricing .container > section section div i {
+  color: var(--mainColor);
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+#pricing .container > section section div p {
+  display: inline-block;
+  color: var(--fontColor);
+}
+
+#pricing .container > section button {
+  margin: 30px auto 50px;
+  display: block;
+  padding: 10px 15px;
+  border: 2px solid var(--mainColor);
+  color: var(--mainColor);
+  font-weight: 700;
+  font-size: 17px;
+  background-color: #fff;
+  border-radius: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#pricing .container > section button:hover {
+  background-color: var(--mainColor);
+  color: #fff;
+}
+
+#pricing .container > section::before, #pricing .container > section::after {
+  content: "";
+  position: absolute;
+  height: 50%;
+  width: 0px;
+  background-color: #ececec6b;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  z-index: -1;
+}
+
+#pricing .container > section::before {
+  top: 0;
+  right: 0;
+}
+
+#pricing .container > section::after {
+  bottom: 0;
+  left: 0;
+}
+
+#pricing .container > section:hover::after, #pricing .container > section:hover::before {
+  width: 100%;
+}
+
+#pricing .container > section:nth-child(2) {
+  -webkit-transform: translateY(-25px);
+          transform: translateY(-25px);
+}
+
+#pricing .container > section:nth-child(2) > p {
+  position: absolute;
+  top: 49px;
+  right: -30px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  background-color: var(--mainColor);
+  padding: 7px 5px 7px 5px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  z-index: 4;
+}
+
+#pricing .container > section:nth-child(2) > p::after {
+  content: "";
+  position: absolute;
+  right: -43px;
+  bottom: 0;
+  border: 22px solid;
+  border-color: var(--mainColor) transparent var(--mainColor) var(--mainColor);
+}
+
+@media (max-width: 1198px) {
+  #pricing .container > section:nth-child(2) {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+/*! End Pricing*/
+/*! Start Top Videos*/
+#top-videos {
+  padding: 60px 0;
+}
+
+#top-videos .container {
+  margin-top: 100px;
+  overflow: hidden;
+}
+
+#top-videos .container .holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #e2e2e2;
+  -webkit-box-shadow: 0 0 10px #ececec;
+          box-shadow: 0 0 10px #ececec;
+}
+
+#top-videos .container .holder .videosBar {
+  min-width: 300px;
+  background-color: #fff;
+  margin: 1px;
+}
+
+#top-videos .container .holder .videosBar header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+#top-videos .container .holder .videosBar header i {
+  -webkit-transition: .3s;
+  transition: .3s;
+  cursor: pointer;
+}
+
+#top-videos .container .holder .videosBar header i:hover {
+  color: var(--fontColor);
+}
+
+#top-videos .container .holder .videosBar .videos-list {
+  max-height: 80vh;
+  /*! Style Scroll Bar*/
+  overflow: hidden auto;
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+  /*! End */
+}
+
+#top-videos .container .holder .videosBar .videos-list::-webkit-scrollbar {
+  width: 0.5em;
+  border-radius: 10px;
+}
+
+#top-videos .container .holder .videosBar .videos-list::-webkit-scrollbar-thumb {
+  background-color: var(--mainColor);
+  border-radius: 10px;
+  height: 5px;
+}
+
+#top-videos .container .holder .videosBar .videos-list li {
+  padding: 20px;
+  border-top: 1px solid #ececec;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 100%;
+  height: 100%;
+}
+
+#top-videos .container .holder .videosBar .videos-list li p {
+  font-size: 16px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+#top-videos .container .holder .videosBar .videos-list li span {
+  color: var(--fontColor);
+  margin-top: 10px;
+  display: block;
+  font-size: 13px;
+}
+
+#top-videos .container .holder .videosBar .videos-list li:hover,
+#top-videos .container .holder .videosBar .videos-list .activeVideo {
+  background-color: #f8f8f8;
+}
+
+#top-videos .container .holder .videosBar .videos-list li:hover p,
+#top-videos .container .holder .videosBar .videos-list .activeVideo p {
+  color: var(--mainColor);
+}
+
+#top-videos .container .holder > section:last-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+}
+
+#top-videos .container .holder > section:last-child .video-container {
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 56.25%;
+}
+
+#top-videos .container .holder > section:last-child .video-container iframe {
+  width: 100%;
+  height: 85%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 1199px) {
+  #top-videos .container .holder > section:last-child .video-container iframe {
+    height: 110%;
+  }
+}
+
+#top-videos .container .holder > section:last-child .video-info {
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+#top-videos .container .holder > section:last-child .video-info .details {
+  width: 100%;
+  color: var(--fontColor);
+  font-weight: 600;
+}
+
+#top-videos .container .holder > section:last-child .video-info .otherDetails {
+  margin-top: 15px;
+  font-size: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#top-videos .container .holder > section:last-child .video-info .otherDetails p {
+  margin-right: 10px;
+}
+
+#top-videos .container .holder > section:last-child .video-info .otherDetails span {
+  background-color: var(--fontColor);
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  #top-videos .container .holder {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  #top-videos .container .holder .videosBar .videos-list {
+    max-height: 60vh;
+  }
+  #top-videos .container .holder .videosBar .videos-list li {
+    padding: 10px 20px;
+  }
+  #top-videos .container .holder > section:last-child {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  #top-videos .container .holder > section:last-child .video-container iframe {
+    height: 60vh;
+  }
+}
+
+@media (max-width: 767px) {
+  #top-videos .container .holder > section:last-child .video-container iframe {
+    height: 80%;
+  }
+}
+
+/*! End Top Videos*/
 /*# sourceMappingURL=main.css.map */

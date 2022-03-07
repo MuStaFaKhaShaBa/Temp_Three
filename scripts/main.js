@@ -248,7 +248,7 @@ ResetSubscribedEvents.onclick = () => {
     AddToLocalStorage([]); // Reset LocalStorage
     StartWebSite(); // Called To Determined Add Event Or What
     SubscribedEvent = false; // No Event Subscribed
-    SetTimeP(Date.now());//Set Time As Now 
+    SetTimeP(Date.now()); //Set Time As Now 
 }
 
 /// /////// /////// ///////
@@ -396,7 +396,7 @@ function EventToField(ArrayOfEvents) {
         eventField.lastElementChild.lastElementChild.onclick = () => {
             ArrayOfEvents = ArrayOfEvents.filter((el, indexChild) => index !== indexChild); // Delete Event
             AddToLocalStorage(ArrayOfEvents); // Will Delete From Local Storage
-            SetTimeP(Date.now());//Set Time As Now 
+            SetTimeP(Date.now()); //Set Time As Now 
         };
     })
 }
@@ -455,4 +455,142 @@ function ResetDateFields() { // reset field of Date Timer
     Date_.Minutes.innerHTML = '00';
     Date_.Seconds.innerHTML = '00';
     clearInterval(interval);
+}
+
+
+// Top Video Section
+let videos_list = document.querySelector(".videos-list"); //Contaner of videos title
+let frameVideo = document.querySelector(".frameTopVideo"); //Iframe Element
+let vidInfo = document.querySelector(".video-info"); //Video Information 
+let ShuffleBtn = document.querySelector(".fa-shuffle"); // Random Video Play
+
+
+class Video_ { // Modul Of Video Information
+    constructor(title, duration, details, dateOfPub, views, videoLink) {
+        this.title = title;
+        this.duration = duration;
+        this.details = details;
+        this.dateOfPub = dateOfPub;
+        this.views = views;
+        this.videoLink = videoLink;
+    }
+}
+
+let ArrayOfVideos = [ // Array To Catch Video Info
+    { // El Bakht
+        title: `El Bakht`, // Video Title
+        duration: `03:26`, // Duration Of Video
+        details: `Wegz - ElBakht | ويجز - البخت (Audio) prod. Rahal`, //Details Of Video
+        dateOfPub: new Date(`2022`, `01`, `26`), // Date Of Publish Video
+        views: `14,062,980 Views`, // Number Of Views Of Video
+        videoLink: `https://www.youtube.com/embed/_RHIECWv728` // Video Links
+    }, { // El Melouk
+        title: `El Melouk`,
+        duration: `04:09`,
+        details: `Ahmed Saad Ft. 3enba & Double Zuksh - El Melouk ( Music Video ) احمد سعد وعنبة و دبل زوكش - الملوك`,
+        dateOfPub: new Date(`2021`, `05`, `23`),
+        views: `53,642,445 Views`,
+        videoLink: `https://www.youtube.com/embed/4_vtOKcfCG8`
+    }, { // اوعدني يا صاحبي متسيبنيش
+        title: `ya sa7by`,
+        duration: '03:24',
+        details: `كليب مهرجان "ياصاحبي اوعدني ماتسبنيش" (انا الشخص اللي كلو عيوب ) ديدا و جيمي / توزيع شيندي وخليل`,
+        dateOfPub: new Date(`2022`, `00`, `24`),
+        views: `3,160,981 Views`,
+        videoLink: `https://www.youtube.com/embed/9-0X6S8Nwdo`
+    }, { // Matkhafesh yamma
+        title: `MATKHAFESH YAMMA`,
+        duration: `02:33`,
+        details: `ALI LOKA - MATKHAFESH YAMMA / على لوكا - متخافيش ياما ( ولا فارقه معايا الناس مين سالك مين بصاص`,
+        dateOfPub: new Date(`2021`, `10`, `06`),
+        views: `16,967,508 Views`,
+        videoLink: `//www.youtube.com/embed/0BdvRRW_FQA`
+    }, { // Awadeeh
+        title: `AWADEEH`,
+        duration: `02:28`,
+        details: `LIL BABA X ABO EL ANWAR - AWADEEH | كليب اغنية اوديه غناء ابو الانوار توزيع ليل بابا`,
+        dateOfPub: new Date(`2021`, `06`, `20`),
+        views: `5,263,070 Views`,
+        videoLink: `https://www.youtube.com/embed/KUDUOJXOz6E`
+    }, { // RAKAM 1 DA MESH ENTA
+        title: `RAKAM 1 DA MESH ENTA`,
+        duration: `03:54`,
+        details: `EL JOKER X HARAM - RAKAM 1 DA MESH ENTA | الجوكر مع هرم - رقم 1 ده مش انت`,
+        dateOfPub: new Date(`2021`, `06`, `27`),
+        views: `11,393,126 Views`,
+        videoLink: `//www.youtube.com/embed/42-k6YQLa_I`
+    }, { // Fokak
+        title: `Fokak`,
+        duration: `03:28`,
+        details: `كليب فكك - دبل زوكش و عنبه | Fokak - Double Zuksh Ft. 3enba | (prod:Coolpix Boi)`,
+        dateOfPub: new Date(`2020`, `11`, `07`),
+        views: `63,715,595 Views`,
+        videoLink: `//www.youtube.com/embed/uVyGBqKMrkc`
+    },
+]
+let DefaultVid = { //Default Video Ya Asfer
+    title: `Ya Asfer`, // Video Title
+    duration: `04:05`, // Duration Of Video
+    details: `كليب "يا اصفر" عبد الباسط حموده و مسلم / Clip "Ya Asfar" Abd ELbaset Hamoda &
+    Muslim`, //Details Of Video
+    dateOfPub: new Date(`2022`, `02`, `24`), // Date Of Publish Video
+    views: `5,044,515 Views`, // Number Of Views Of Video
+    videoLink: `https://www.youtube.com/embed/Q6VyoTIzHqw` // Video Links
+}
+
+PutVideosToPage(ArrayOfVideos); //Call Function
+
+ShuffleBtn.onclick = () => {
+    let Num = Math.floor((Math.random() * 10))
+    if (Num >= 8) {
+        Num = 7
+    }
+    console.log(Num);
+    console.log(videos_list.children[Num]);
+    Onclick_Li(videos_list.children[Num], ArrayOfVideos[Num]);
+}
+
+function SliceDate(Date) { // Slice Date String
+    return Date.toString().substring(0, 15);
+}
+
+function CreateLiElement(video_info) {
+    let Li = document.createElement("li"), // Li Element
+        Title = document.createElement("p"), // Title Element
+        Duration_ = document.createElement("span"); // Duration Element
+
+    Title.innerHTML = video_info.title; //Add Title Name To Its Element
+    Duration_.innerHTML = video_info.duration; //Add Duration Time To Its Element
+
+    Li.appendChild(Title); //Appent Title To Li Element
+    Li.appendChild(Duration_); // Append Duration To Li Element
+
+    Li.onclick = () => {
+        Onclick_Li(Li, video_info)
+    }
+    return Li; //Return Li ElementNode
+}
+
+function PutVideosToPage(Array_) {
+
+
+    for (let i = 0; i < Array_.length; i++) { // Loop To Create Video Element
+        let Li = CreateLiElement(Array_[i]); // Get Li Element With His Feature
+        videos_list.appendChild(Li); // Append Li To His Father
+    }
+}
+
+function Onclick_Li(Li, video_info) {
+    document.querySelectorAll(".videos-list li").forEach((liel) => { //remove Class Active Frome All Videos
+        liel.classList.remove("activeVideo");
+    });
+
+    Li.classList.add("activeVideo"); //Add Class Active To Style
+
+    frameVideo.setAttribute("src", video_info.videoLink); // Set viedo link in source
+
+    vidInfo.firstElementChild.innerHTML = video_info.details; // Put Details Info To Information Section
+
+    vidInfo.lastElementChild.innerHTML = `${video_info.views} Views . ${SliceDate(video_info.dateOfPub)}`; //Other Information
+
 }
