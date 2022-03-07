@@ -1410,11 +1410,11 @@
                     align-items: center;
                     background-color: #f4f4f4;
                     padding: 20px;
-                    
+
                     i {
-                        transition: .3s;
+                        transition: 0.3s;
                         cursor: pointer;
-                        &:hover{
+                        &:hover {
                             color: var(--fontColor);
                         }
                     }
@@ -1504,17 +1504,6 @@
                     .otherDetails {
                         margin-top: 15px;
                         font-size: 15px;
-                        display: flex;
-                        p {
-                            margin-right: 10px;
-                        }
-                        span {
-                            background-color: var(--fontColor);
-                            border-radius: 50%;
-                            width: 5px;
-                            height: 5px;
-                            display: block;
-                        }
                     }
                 }
             }
@@ -1542,9 +1531,105 @@
                             height: 80%;
                         }
                     }
+                    .video-info {
+                        .details {
+                            font-size: 16px;
+                            font-weight: 500;
+                        }
+                        .otherDetails {
+                            font-size: 13px;
+                        }
+                    }
                 }
             }
         }
     }
 }
 /*! End Top Videos*/
+/*! Start Stats*/
+#stats {
+    padding: 60px 0;
+    position: relative;
+    background-image: url("../images/stats.jpg");
+    background-size: cover;
+    text-align: center;
+    z-index: 2;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.952);
+        z-index: -1;
+    }
+    h2 {
+        font-size: 40px;
+        color: var(--fontColor);
+        font-weight: 600;
+    }
+    .container {
+        margin-top: 100px;
+        @include grid-tem(4, 30px);
+        section {
+            background-color: #fcfefe;
+            transition: 0.3s;
+            cursor: pointer;
+            padding: 20px;
+            color: var(--fontColor);
+            position: relative;
+            i {
+                font-size: 40px;
+            }
+            .number {
+                font-size: 40px;
+                font-weight: 800;
+                margin: 15px 0;
+                transition: 0.3s;
+            }
+            p:last-child {
+                font-style: italic;
+                color: var(--mainColor);
+                font-size: 18px;
+            }
+
+            &:hover {
+                background-color: #fff;
+                .number {
+                    color: var(--mainColor);
+                }
+            }
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                background-color: var(--mainColor);
+                height: 0;
+                width: 3px;
+                transition: .5s;
+            }
+            &::before {
+                bottom: 0;
+                left: 0;
+            }
+            &::after {
+                top: 0;
+                right: 0;
+            }
+
+            &:hover {
+                background-color: #fff;
+                .number {
+                    color: var(--mainColor);
+                }
+
+                &::before,
+                &::after {
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+/*! End Stats*/

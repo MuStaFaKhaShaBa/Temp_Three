@@ -6,6 +6,7 @@ UpArrow.onclick = () => {
     window.scrollTo(0, 0);
 }
 
+
 // End Control of Up Arrow
 let megaMenu = document.querySelector(".megaMenu"),
     otherLinks = document.querySelector("header .container > ul > li:last-child");
@@ -134,6 +135,19 @@ window.onscroll = () => {
     } else
         UpArrow.style.display = 'none';
     /////
+
+    //Stats Section
+
+    if ((window.scrollY >= document.querySelector("#stats").offsetTop - 260) && (window.scrollY <= document.querySelector("#stats").offsetTop + 600)) {
+
+        if (sections_p[0].innerHTML == '') {
+            sections_p.forEach((el, index) => {
+                CounterStats(el, num[index]);
+            })
+        }
+    } else {
+        sections_p[0].innerHTML = '';
+    }
 }
 
 function deley() {
@@ -539,10 +553,11 @@ let DefaultVid = { //Default Video Ya Asfer
 }
 
 PutVideosToPage(ArrayOfVideos); //Call Function
+ArrayOfVideos.unshift(DefaultVid);
 
 ShuffleBtn.onclick = () => {
     let Num = Math.floor((Math.random() * 10))
-    if (Num >= 8) {
+    if (Num > 7) {
         Num = 7
     }
     console.log(Num);
@@ -594,3 +609,25 @@ function Onclick_Li(Li, video_info) {
     vidInfo.lastElementChild.innerHTML = `${video_info.views} Views . ${SliceDate(video_info.dateOfPub)}`; //Other Information
 
 }
+
+// ///// Start Stats Section
+
+let Stats = document.querySelectorAll("#stats"); //stats Section
+let sections_p = document.querySelectorAll("#stats .number"); //Catch All P Counter
+let num = [150, 135, 50, 500];
+
+function CounterStats(section, num) {
+    let start = 0;
+    section.textContent = -1;
+    let interval = setInterval(() => {
+        section.textContent++;
+        start++;
+        if (start > num) {
+            clearInterval(interval);
+        }
+    }, 2000 / num);
+}
+
+// window.onscroll = () => {
+
+// }
