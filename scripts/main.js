@@ -22,7 +22,7 @@ otherLinks.onclick = _ => {
 
 function activMegaMenu() {
     megaMenu.style.cssText = ` opacity : 1;
-        top: calc(100% + 10px);
+        top: calc(100% + 5px);
         `;
     document.querySelector(".landing i").style.display = 'none'; // hide arrow
     megaMenu_active = true;
@@ -137,17 +137,28 @@ window.onscroll = () => {
     /////
 
     //Stats Section
-
-    if ((window.scrollY >= document.querySelector("#stats").offsetTop - 260) && (window.scrollY <= document.querySelector("#stats").offsetTop + 600)) {
-
-        if (sections_p[0].innerHTML == '') {
-            sections_p.forEach((el, index) => {
-                CounterStats(el, num[index]);
-            })
+    if (window.matchMedia(`(min-width:767px)`).matches) {
+        if ((window.scrollY >= document.querySelector("#stats").offsetTop - 260) && (window.scrollY <= document.querySelector("#stats").offsetTop + 600)) {
+            if (sections_p[0].innerHTML == '') {
+                sections_p.forEach((el, index) => {
+                    CounterStats(el, num[index]);
+                })
+            }
+        } else {
+            sections_p[0].innerHTML = '';
         }
     } else {
-        sections_p[0].innerHTML = '';
+        if ((window.scrollY >= document.querySelector("#stats").offsetTop - 260) && (window.scrollY <= document.querySelector("#stats").offsetTop + 1600)) {
+            if (sections_p[0].innerHTML == '') {
+                sections_p.forEach((el, index) => {
+                    CounterStats(el, num[index]);
+                })
+            }
+        } else {
+            sections_p[0].innerHTML = '';
+        }
     }
+
 }
 
 function deley() {
@@ -215,13 +226,14 @@ for (let i = 0; i < MAX_NUM_OF_ELEMENT; i++) { //Add Events In Available Events 
 let IntervalExist = false; // Determined Existence Of Interval
 let interval = 0; // Store Interval Id
 
+let current = 0 // Current Date Id For Interval
 
 /*Start of Web Will Check If User Has Events Subscribed In His Local Storage
 Or No .
 If he Has We Will Put First Didn't End Event To Page .
 If He Hasn't We Will Put First Event Available From ExistenceEvent */
 
-SetTimeP(Date.now()); // Add Time Of Current Date
+setCurrentTime() // Add Time Of Current Date
 
 StartWebSite(); //Call Function
 
@@ -262,10 +274,33 @@ ResetSubscribedEvents.onclick = () => {
     AddToLocalStorage([]); // Reset LocalStorage
     StartWebSite(); // Called To Determined Add Event Or What
     SubscribedEvent = false; // No Event Subscribed
-    SetTimeP(Date.now()); //Set Time As Now 
+    setCurrentTime(); //Set Time As Now 
 }
 
-/// /////// /////// ///////
+otherEvent.onclick = () => {
+    if (MAX_NUM_OF_ELEMENT !== 0) {
+
+        if (EventNum === (MAX_NUM_OF_ELEMENT)) {
+            (EventNum = 0)
+        }
+
+        // if (SubscribedEvent) {
+        SubscribedEvent = false;
+        // } // Current Event Hasn't Been Subscribed
+        SendEventToTimer(ExistenceEvent[EventNum++]);
+
+        // console.log(`event num ${EventNum} in Other`);//Test
+        // console.log(`Max event num ${MAX_NUM_OF_ELEMENT} in other`);//Test
+    } else {
+        AvailableEvents();
+    }
+}
+
+function setCurrentTime() {
+    current = setInterval(() => {
+        SetTimeP(Date.now())
+    }, 1000);
+}
 
 function StartWebSite() { // function Called When Web Site Open
 
@@ -398,7 +433,7 @@ function EventToField(ArrayOfEvents) {
     arr.forEach((eventField, index) => { // Set Events On Buttons And Element onClick
         eventField.onclick = () => {
             let DateEvent_Id = eventField.getAttribute("data-EventId");
-            console.log(+DateEvent_Id)
+            clearInterval(current); //Clear Current Date Interval;
             SetTimeP(+DateEvent_Id); // Put Event Date To Current Event Clicked To P
         };
 
@@ -425,25 +460,6 @@ function GetFromLocalStorage() {
         ArrayOfEvents = JSON.parse(window.localStorage.getItem("Events"));
         EventToField(ArrayOfEvents);
         // TimerDate(ArrayOfEvents[5]);//Send First Event In Local Storage
-    }
-}
-
-otherEvent.onclick = () => {
-    if (MAX_NUM_OF_ELEMENT !== 0) {
-
-        if (EventNum === (MAX_NUM_OF_ELEMENT)) {
-            (EventNum = 0)
-        }
-
-        // if (SubscribedEvent) {
-        SubscribedEvent = false;
-        // } // Current Event Hasn't Been Subscribed
-        SendEventToTimer(ExistenceEvent[EventNum++]);
-
-        // console.log(`event num ${EventNum} in Other`);//Test
-        // console.log(`Max event num ${MAX_NUM_OF_ELEMENT} in other`);//Test
-    } else {
-        AvailableEvents();
     }
 }
 
@@ -477,7 +493,6 @@ let videos_list = document.querySelector(".videos-list"); //Contaner of videos t
 let frameVideo = document.querySelector(".frameTopVideo"); //Iframe Element
 let vidInfo = document.querySelector(".video-info"); //Video Information 
 let ShuffleBtn = document.querySelector(".fa-shuffle"); // Random Video Play
-
 
 class Video_ { // Modul Of Video Information
     constructor(title, duration, details, dateOfPub, views, videoLink) {
@@ -560,8 +575,8 @@ ShuffleBtn.onclick = () => {
     if (Num > 7) {
         Num = 7
     }
-    console.log(Num);
-    console.log(videos_list.children[Num]);
+    // console.log(Num); // Test
+    // console.log(videos_list.children[Num]); // test
     Onclick_Li(videos_list.children[Num], ArrayOfVideos[Num]);
 }
 
@@ -614,7 +629,7 @@ function Onclick_Li(Li, video_info) {
 
 let Stats = document.querySelectorAll("#stats"); //stats Section
 let sections_p = document.querySelectorAll("#stats .number"); //Catch All P Counter
-let num = [150, 135, 50, 500];
+let num = [150, 135, 50, 500]; // Rate Of Sections
 
 function CounterStats(section, num) {
     let start = 0;
@@ -627,7 +642,3 @@ function CounterStats(section, num) {
         }
     }, 2000 / num);
 }
-
-// window.onscroll = () => {
-
-// }

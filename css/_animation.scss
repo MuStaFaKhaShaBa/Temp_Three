@@ -102,3 +102,11 @@
         background-color: #03a8f4b0;
     }
 }
+@keyframes DiscountAnimi {
+    0% {
+        background-image: url("../images/discount-background1.jpg");
+    }
+    100% {
+        background-image: url("../images/discount-background2.jpg");
+    }
+}
