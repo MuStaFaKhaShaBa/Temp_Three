@@ -148,7 +148,7 @@ window.onscroll = () => {
             sections_p[0].innerHTML = '';
         }
     } else {
-        if ((window.scrollY >= document.querySelector("#stats").offsetTop - 260) && (window.scrollY <= document.querySelector("#stats").offsetTop + 1600)) {
+        if ((window.scrollY >= document.querySelector("#stats").offsetTop - 600) && (window.scrollY <= document.querySelector("#stats").offsetTop + 1600)) {
             if (sections_p[0].innerHTML == '') {
                 sections_p.forEach((el, index) => {
                     CounterStats(el, num[index]);

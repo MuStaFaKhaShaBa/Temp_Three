@@ -2368,6 +2368,12 @@
   font-weight: 600;
 }
 
+@media (max-width: 767px) {
+  #stats h2 {
+    font-size: 25px;
+  }
+}
+
 #stats .container {
   margin-top: 100px;
   display: -ms-grid;

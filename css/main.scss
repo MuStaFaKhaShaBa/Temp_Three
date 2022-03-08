@@ -1601,6 +1601,9 @@
         font-size: 40px;
         color: var(--fontColor);
         font-weight: 600;
+        @media (max-width:767px) {
+            font-size: 25px;
+        }
     }
     .container {
         margin-top: 100px;
